@@ -303,7 +303,7 @@
                     <p>
                         Overview of Adaptive Skill Synthesis. 
                         VLMs perform (Top) <strong>Bootstrapping</strong> by analyzing offline data for initial Tactic Analysis and Skill Generation into a Skill Library. 
-                        (Bottom) <strong>Incremental Synthesis</strong> uses Task Reasoning to dynamically generate or enhance code-based skills, evolving the library for new tasks. 
+                        (Bottom) <strong>Incremental Synthesis</strong> uses Task Reasoning/Self Reflection to dynamically generate or enhance code-based skills, evolving the library for new tasks. 
                         The skills follow a structured decision-making pipeline with two core components: score_target(unit) for dynamic target prioritization and control_logic() for coordinating behavior. 
                         Textual observations are parsed into structured data (obs_data), mapping raw text to attributes, e.g., "Can move North: yes" -> can_move={'north': True}.
                     </p>
@@ -358,14 +358,56 @@
             <!-- Paint the vision / Overview-->
             <div class="column has-text-justified">
 
-                <h3>The fingering discovered by the agent itself vs human pianist annotations</h3>
+                <h3>Structured Communication Protocol</h3>
 
                 <div class="column overlay-image has-text-centered">
-                    <p> We compare the fingering discovered by the agent itself and the human annotations. We visualize the sample trajectory of playing <i>French Suite No.5 Sarabande</i> and the corresponding fingering. The agent discovers different fingering compared to humans. For example, for the right hand, humans mainly use the middle and ring fingers, while our agent uses the thumb and first finger. Furthermore, in some cases, human annotations are not suitable for the robot hand due to different morphologies. For example, in the second time step of the figure, the human uses the first finger and ring finger. However, due to the mechanical limitation of the robot hand, it can not press keys that far apart with these two fingers, thus mimicking human fingering will miss one key. Instead, our agent discovered to use the thumb and little finger, which satisfies the hardware limitation and accurately presses the target keys.</p>
+                    <p> COMPASS implements a <strong>hierarchical communication protocol</strong> that focuses on efficient <strong>entity-based</strong> information sharing and <strong>multi-hop propagation</strong>. 
+                        Each agent maintains an observation buffer containing information about entities in its field of view. 
+                        At each timestep, agents share their local observations, which are then aggregated into a global entity memory accessible to all. 
+                        COMPASS employs a multi-hop communication mechanism to propagate information about distant entities, enabling agents to build a more holistic observation of the environment by leveraging the collective knowledge of the team.</p>
                 </div>
 
                 <div class="column overlay-image has-text-centered">
-                    <img src="assets/fig3.png">
+                    <img src="assets/multi-hop.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container is-max-desktop">
+        <div class="content is-centered has-text-centered">
+            <!-- Paint the vision / Overview-->
+            <div class="column has-text-justified">
+
+                <h3>Skill Analysis</h3>
+
+                <div class="columns is-centered has-text-centered is-vcentered">
+                    <div class="column is-centered has-text-centered is-vcentered">
+                        <img src="assets/smac1.png">
+                        <div class="content is-centered has-text-centered font-size: 1em;">
+                            <strong>Focus Fire Logic Implementation.</strong>
+                        </div>
+                    </div>
+                    <div class="column is-centered has-text-centered is-vcentered">
+                        <img src="assets/smac2.png">
+                        <div class="content is-centered has-text-centered font-size: 1em;">
+                            <strong>Kitting logic.</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns is-centered has-text-centered is-vcentered">
+                    <div class="column is-centered has-text-centered is-vcentered">
+                        <img src="assets/smac3.png">
+                        <div class="content is-centered has-text-centered font-size: 1em;">
+                            <strong>Isolating logic</strong>
+                        </div>
+                    </div>
+                    <div class="column is-centered has-text-centered is-vcentered">
+                        <img src="assets/smac4.png">
+                        <div class="content is-centered has-text-centered font-size: 1em;">
+                            <strong>Area-of-Effect (AOE) optimization for Baneling</strong>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
