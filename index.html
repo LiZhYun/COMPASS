@@ -525,10 +525,19 @@
                         </table>
                     
                 <p>
-                    The performance of our method is on part with the one that requires human annotated fingering, and surpass the one without fingering info by a large margin. 
+                    COMPASS demonstrates significant performance advantages in SMACv2, 
+                    particularly excelling in Protoss scenarios where it achieves a 57% win rate in symmetric engagements using GPT-4o-mini, 
+                    substantially outperforming traditional approaches like QMIX (27%), MAPPO (32%), and HAPPO (34%). 
+
+                    However, performance varies across race matchups. 
+                    While maintaining strong results in Terran scenarios (39% win rate), COMPASS shows limited effectiveness in Zerg scenarios (16% win rate). 
+                    This performance disparity can be attributed to the unique mechanics of Zerg combat units, which demand more fine-grained micromanagement due to their shorter attack ranges and reliance on swarm-based tactics.
                 </p>
                 <div class="column overlay-image has-text-centered">
-                    <img src="assets/curve.png">
+                    <img src="assets/Baseline training results on SMACv2.png">
+                    <div class="content is-centered has-text-centered font-size: 1em;">
+                        Baseline training results on SMACv2.
+                    </div>
                 </div>
                 </div>
             </div>
