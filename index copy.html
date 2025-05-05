@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="COMPASS">
+    <!-- <meta name="image" content="https://robopen.github.io/cover.png"> -->
+    <meta name="keywords" content="Multi-Agent, Vision Language Model, Reinforcement Learning">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>COMPASS: Cooperative Multi-Agent Planning with Adaptive Skill Synthesis
+    </title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/favicon.svg" />
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:url" content="https://stellar-entremet-1720bb.netlify.app/index.html" />
+    <meta property="og:title" content="COMPASS" />
+    <meta property="og:description"
+        content="Cooperative Multi-Agent Planning with Adaptive Skill Synthesis" />
+
+    <!--TWITTER-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="COMPASS" />
+    <meta name="twitter:description"
+        content="Cooperative Multi-Agent Planning with Adaptive Skill Synthesis" />
+
+    <link rel="stylesheet" href="index.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css'>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Source+Sans+3:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!--ANALYTICS TAG-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-44241506-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-44241506-1');
+    </script>
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-carousel.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const videoElement = document.getElementById('bg-video');
+
+        // When the video metadata is loaded
+        videoElement.addEventListener('loadedmetadata', function () {
+            videoElement.style.opacity = 1.0;
+        });
+    });
+
+    window.addEventListener("scroll", function () {
+        let imageDiv = document.querySelector('.full-page-image');
+        const videoElement = document.getElementById('bg-video');
+        if (window.scrollY > 40000) {
+            videoElement.style.opacity = 0;
+        }
+        // Check if page is scrolled
+        if (window.scrollY > 1) { // You can adjust this value based on your requirement
+            imageDiv.classList.add('banner-state');
+            imageDiv.classList.add('ncont');
+            imageDiv.style.backgroundImage = `url(assets/banner.png)`;
+        };
+    });
+
+    function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
+
+
+</script>
+
+<body class="vsc-initialized">
+    <div class="full-page-image">
+
+        <video id="bg-video" autoplay loop muted playsinline>
+            <source src="assets/COMPASS.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <!-- You can add an overlay and content inside the container -->
+        <div class="orange"></div>
+
+        <div class="jay" style="padding: 0 20px">
+            <h1 style="font-family: Poppins; font-size: 250%;">COMPASS</h1>
+            <p style="font-family: Poppins; font-size: 100%;">Cooperative Multi-Agent Planning with Adaptive Skill Synthesis</p>
+        </div>
+    </div>
+
+    <!-- <div class="content is-centered has-text-centered" style="margin-right: 20%; margin-left: 20%; "> -->
+    <div class="content is-centered has-text-centered">
+        <section class="hero">
+            <div class="hero-body">
+                <div class="container is-max-desktop">
+                    <div class="columns is-centered">
+                        <div class="column has-text-centered">
+                            <h2 class="title is-1 publication-title">
+                                <strong>COMPASS</strong>
+                            </h2>
+                            <h2 class="subtitle" style="font-family: 'Source Sans 3', sans-serif; font-weight: 300;">
+                                <!-- <h2 style="font-family: 'Poppins', sans-serif; font-weight: 100;"> -->
+                                <strong>
+                                    Cooperative Multi-Agent Planning with Adaptive Skill Synthesis
+                                </strong>
+                            </h2>
+                            <!-- <h2 class="subtitle is-4">
+                                <a href="https://www.corl.org/home" style="color: rgba(118, 50, 202, 0.742);">CoRL 2024</a></h2> -->
+                            <div class="is-size-6 publication-authors">
+                                <h5>
+                                <span class="author-block">
+                                    <a href="#">Anonymous Author(s)</a></span>
+                                <!-- <span class="author-block">
+                                    <a href="https://clthegoat.github.io/">Le Chen</a><sup>*,1</sup>,</span>
+                                <span class="author-block">
+                                    <a href="https://ei.is.mpg.de/person/jschneider">Jan Schneider</a><sup>1</sup>,</span>
+                                <span class="author-block">
+                                    <a href="https://zerg-overmind.github.io/">Quankai Gao</a><sup>3</sup>,</span>
+                                <span class="author-block"> -->
+                                </h5>
+                                <!-- <h5>
+                                <span class="author-block">
+                                    <a href="https://users.aalto.fi/~kannalj1/">Juho Kannala</a><sup>2,4</sup>,</span>
+                                    <span class="author-block">
+                                    <a href="https://ei.is.mpg.de/person/bs">Bernhard Schölkopf</a><sup>1</sup>,</span>
+                                    <span class="author-block">
+                                    <a href="https://rl.aalto.fi/">Joni Pajarinen</a><sup>2</sup>,</span>
+                                    <span class="author-block">
+                                    <a href="https://ei.is.mpg.de/person/dbuechler">Dieter Büchler</a><sup>1</sup></span>
+                                    <span class="author-block">
+                                </span>            -->
+                              </div>
+                    
+                              <div class="is-size-5 publication-authors">
+                                <span class="author-block">Affiliation</span>
+                                <!-- <span class="author-block"><sup>1</sup>Max Planck Institute for Intelligent Systems</span>&nbsp;&nbsp;&nbsp;
+                                <span class="author-block"><sup>2</sup>Aalto University</span>&nbsp;&nbsp;&nbsp;
+                                <span class="author-block"><sup>3</sup>University of Southern California</span>&nbsp;&nbsp;&nbsp;
+                                <span class="author-block"><sup>4</sup>University of Oulu</span> -->
+                              </div>
+
+                            <!-- <div class="column has-text-centered"> -->
+                                <!-- <div class="col-md-12 mt-3">
+                                    <a href="https://openreview.net/pdf?id=pqgoIGvcgY" class="btn btn-secondary btn-sm" target="_blank"><i class="fa-solid fa-file-pdf"></i>&nbsp;&nbsp;arXiv</a>
+                                    <a href="https://clthegoat.github.io/" target="_blank" class="btn btn-secondary btn-sm"><i class="fa-brands fa-youtube"></i>&nbsp;&nbsp;Video</a>
+                                    <a href="https://clthegoat.github.io/" target="_blank" class="btn btn-secondary btn-sm"><i class="fa-brands fa-github"></i>&nbsp;&nbsp;Code</a>
+                                    <a href="#dataset" class="btn btn-secondary btn-sm"><i class="fa-solid fa-images"></i>&nbsp;&nbsp;Dataset</a>
+                                    <a href="#citation" class="btn btn-secondary btn-sm"><i class="fa-solid fa-file"></i>&nbsp;&nbsp;BibTeX</a>
+                                </div> -->
+                                <!-- <div class="publication-links">
+                                    <span class="link-block">
+                                        <a href="https://arxiv.org/abs/2408.11048"
+                                            class="external-link button is-normal is-rounded is-dark" target="_blank">
+                                            <span class="icon">
+                                                <i class="fa fa-file-pdf-o" style="font-size:24px"></i>
+                                            </span>
+                                            <span>Paper</span>
+                                        </a>
+                                    </span>
+                                    <span class="link-block">
+                                        <a href="https://drive.google.com/file/d/1DF1QSU8u_SP9WBYpi1kk7c8Wtajg1NFx/view?usp=sharing"
+                                            class="external-link button is-normal is-rounded is-dark" target="_blank">
+                                            <span class="icon">
+                                                <i class="fa fa-file-pdf-o" style="font-size:24px"></i>
+                                            </span>
+                                            <span>Poster</span>
+                                        </a>
+                                    </span>
+                                    <span class="link-block">
+                                        <a href="https://github.com/google-research/robopianist/pull/24"
+                                            class="external-link button is-normal is-rounded is-dark" target="_blank">
+                                            <span class="icon">
+                                                <i class="fa fa-github" style="font-size:24px"></i>
+                                            </span>
+                                            <span>Robopianist Code</span>
+                                        </a>
+                                    </span>
+                                    <span class="link-block">
+                                        <a href="https://colab.research.google.com/drive/1sMAjT4wmFUCCb1x7JLnry3AQcRcEOuok?usp=sharing"
+                                            class="external-link button is-normal is-rounded is-dark" target="_blank">
+                                            <span class="icon">
+                                                <img src="https://colab.research.google.com/img/colab_favicon_256px.png" style="width:24px; height:24px">
+                                            </span>
+                                            <span>Colab Demo</span>
+                                        </a>
+                                    </span>
+                                    <span class="link-block">
+                                        <a href="https://edmond.mpg.de/dataset.xhtml?persistentId=doi:10.17617/3.XCE8NX" target="_blank"
+                                            class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="fa fa-database" style="font-size:24px"></i>
+                                            </span>
+                                            <span>Dataset</span>
+                                        </a>
+                                    </span>
+                                    <span class="link-block">
+                                        <a href="https://drive.google.com/file/d/1D7Edq1zTslRFiiOCWMAyrnfTLR-yeAFL/view?usp=sharing" target="_blank"
+                                            class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="fa fa-video-camera" style="font-size: 24px;"></i>
+                                            </span>
+                                            <span>Video</span>
+                                        </a>
+                                    </span>
+                                </div> -->
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="container is-max-desktop">
+        <div class="content is-centered has-text-centered">
+
+            <div class="column has-text-justified">
+
+                <!-- Make central claim -->
+                 <!-- change font size -->
+                <p style="text-align: center; font-size: 1em;">
+                    We present <strong>COMPASS</strong>, a novel <strong>multi-agent</strong> architecture that integrates <strong>vision-language models (VLMs)</strong> with a <strong>dynamic skill library</strong> and <strong>structured communication</strong> for <strong>decentralized closed-loop decision-making</strong>.
+                </p>
+
+                <!-- Add videos highlighting results-->
+                <!-- <div class="column has-text-centered">
+                    <div class="publication-video">
+                        <video poster="" autoplay controls muted loop playsinline height="100%">
+                            <source src="assets/RP1M.mp4" type="video/mp4">
+                            caption
+                        </video>
+                    </div>
+                </div> -->
+
+                <!-- Video caption -->
+                <!-- <p>
+                    The expert trajectories in RP1M are collected via training RL agents for each of the 2k songs and roll out each policy 500 times with different random seeds. Our method does <strong>not</strong> require any human demonstrations or fingering annotations.
+                    Given the MIDI file <strong>only</strong>, fingering is <strong>discovered automatically</strong> while playing the piano.
+                </p> -->
+                <div class="column overlay-image has-text-centered">
+                    <img src="assets/compass.png">
+                    <p>
+                        Overview of the COMPASS architecture, a novel framework that advances <strong>cooperative multi-agent decision-making</strong> through three synergistic components: 
+                        (1) A <strong>VLM-based closed-loop planner</strong> that enables decentralized control by continuously processing multi-modal feedback and adapting strategies, addressing the non-Markovian challenge of multi-agent systems; 
+                        (2) A <strong>dynamic skill synthesis mechanism</strong> that combines demonstration bootstrapping with incremental skill generation, improving sample efficiency and interpretability; and 
+                        (3) A <strong>structured communication protocol</strong> that facilitates efficient information sharing through entity-based multi-hop propagation, enhancing cooperative perception under partial observability.
+                    </p>
+                </div>
+                <!-- <h2 class="title is-4">
+                    How does the agent learn to play the piano given only the MIDI file?
+                </h2> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container is-max-desktop">
+        <div class="content is-centered has-text-centered">
+            <!-- Paint the vision / Overview-->
+            <div class="column has-text-justified">
+
+                <h3>Adaptive Skill Synthesis</h3>
+
+                <div class="column overlay-image has-text-centered">
+                    <img src="assets/adaptive skill.png">
+                    <p>
+                        Overview of Adaptive Skill Synthesis. 
+                        VLMs perform (Top) <strong>Bootstrapping</strong> by analyzing offline data for initial Tactic Analysis and Skill Generation into a Skill Library. 
+                        (Bottom) <strong>Incremental Synthesis</strong> uses Task Reasoning/Self Reflection to dynamically generate or enhance code-based skills, evolving the library for new tasks. 
+                        The skills follow a structured decision-making pipeline with two core components: score_target(unit) for dynamic target prioritization and control_logic() for coordinating behavior. 
+                        Textual observations are parsed into structured data (obs_data), mapping raw text to attributes, e.g., "Can move North: yes" -> can_move={'north': True}.
+                    </p>
+                </div>
+
+                <div class="columns is-centered has-text-centered is-vcentered">
+                    <div class="column is-centered has-text-centered is-vcentered">
+                        <img src="assets/task reasoning.png">
+                        <div class="content is-centered has-text-centered font-size: 1em;">
+                            <strong>Task Reasoning</strong>
+                        </div>
+                    </div>
+                    <div class="column is-centered has-text-centered is-vcentered">
+                        <img src="assets/self reflection.png">
+                        <div class="content is-centered has-text-centered font-size: 1em;">
+                            <strong>Self Reflection</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="column overlay-image has-text-centered">
+                    <p> Although fingering is highly personalized, generally speaking, it helps pianists to press keys timely and
+                        efficiently. Motivated by this, apart from maximizing the key pressing rewards, we also aim to minimize the moving
+                        distances of fingers. Specifically, at time step \(t\), for the \(i\)-th key \(k^i\) to press, we use the \(j\)-th
+                        finger \(f^j\) to press this key such that the overall moving cost is minimized. We define the minimized cumulative
+                        moving distance as \(d_t^{\text{OT}} \in \mathbb{R}^+\), which is given by: </p>
+                    \[
+                    \begin{split}
+                    d_t^{\text{OT}}  =& \min_{w_t} \sum_{(i,j)\in K_t \times F}w_t(k^i, f^j)\cdot c_t(k^i, f^j), ~~
+                    \text{s.t.}, ~~ i)~ \sum_{j\in F}w_t(k^i, f^j) = 1, ~~ \text{for} ~~ i \in K_t, \\
+                                    & ii)~ \sum_{i\in K_t}w_t(k^i, f^j) \leq 1, ~~ \text{for} ~~ j \in F, ~~~
+                                    iii)~~ w_t(k^i, f^j) \in \{0, 1 \}, ~~ \text{for} ~~ (i, j) \in K_t \times F.
+                    \end{split}
+                    \]
+                    <p> Here, \(K_t\) represents the set of keys to press at time step \(t\) and \(F\) represents the fingers of the robot hands. \(c_t(k^i, f^j)\) represents the cost of moving finger \(f^j\) to piano key \(k^i\) at time step \(t\) calculated by their Euclidean distance. \(w_t(k^i, f^j)\) is a boolean weight. In our case, it enforces that each key in \(K_t\) will be pressed by only one finger in \(F\), and each finger presses at most one key. The constrained optimization problem in the equation is an optimal transport problem. Intuitively, it tries to find the best "transport" strategy such that the overall cost of moving (a subset of) fingers \(F\) to keys \(K_t\) is minimized. </p>
+                </div>
+
+                <div class="column has-text-centered">
+                    <div class="publication-video">
+                        <video poster="" autoplay muted loop playsinline controls height="100%">
+                            <source src="assets/OT_reward_calculation.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container is-max-desktop">
+        <div class="content is-centered has-text-centered">
+            <!-- Paint the vision / Overview-->
+            <div class="column has-text-justified">
+
+                <h3>Structured Communication Protocol</h3>
+
+                <div class="column overlay-image has-text-centered">
+                    <p> COMPASS implements a <strong>hierarchical communication protocol</strong> that focuses on efficient <strong>entity-based</strong> information sharing and <strong>multi-hop propagation</strong>. 
+                        Each agent maintains an observation buffer containing information about entities in its field of view. 
+                        At each timestep, agents share their local observations, which are then aggregated into a global entity memory accessible to all. 
+                        COMPASS employs a multi-hop communication mechanism to propagate information about distant entities, enabling agents to build a more holistic observation of the environment by leveraging the collective knowledge of the team.</p>
+                </div>
+
+                <div class="column overlay-image has-text-centered">
+                    <img src="assets/multi-hop.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container is-max-desktop">
+        <div class="content is-centered has-text-centered">
+            <!-- Paint the vision / Overview-->
+            <div class="column has-text-justified">
+
+                <h3>Skill Analysis</h3>
+
+                <div class="columns is-centered has-text-centered is-vcentered">
+                    <div class="column is-centered has-text-centered is-vcentered">
+                        <img src="assets/smac1.png">
+                        <div class="content is-centered has-text-centered font-size: 1em;">
+                            <strong>Focus Fire Logic Implementation.</strong>
+                            (a) VLM-generated Python code snippet implementing dynamic focus fire logic. The code prioritizes enemy units based on the number of allied attackers, scaling the attack bonus exponentially. 
+                            (b–d) Visualizations of focus fire execution across Protoss, Terran, and Zerg.
+                        </div>
+                    </div>
+                    <div class="column is-centered has-text-centered is-vcentered">
+                        <img src="assets/smac2.png">
+                        <div class="content is-centered has-text-centered font-size: 1em;">
+                            <strong>Kitting logic.</strong>
+                            (a)-(c) demonstrate progressive stages of the kitting tactic where allied units strategically maintain optimal attack range while retreating from melee enemies. 
+                            (d) shows the corresponding Python code snippet generated by the VLMs.
+                        </div>
+                    </div>
+                </div>
+                <div class="columns is-centered has-text-centered is-vcentered">
+                    <div class="column is-centered has-text-centered is-vcentered">
+                        <img src="assets/smac3.png">
+                        <div class="content is-centered has-text-centered font-size: 1em;">
+                            <strong>Isolating logic</strong>
+                            (a) Allied units strategically assemble into a cohesive formation. 
+                            (b) The assembled units execute a rapid engagement against an isolated enemy unit, eliminating it before reinforcements can arrive, thus creating a numerical advantage.
+                        </div>
+                    </div>
+                    <div class="column is-centered has-text-centered is-vcentered">
+                        <img src="assets/smac4.png">
+                        <div class="content is-centered has-text-centered font-size: 1em;">
+                            <strong>Area-of-Effect (AOE) optimization for Baneling</strong>
+                            (a) The VLM-generated Python code calculates optimal detonation positions by analyzing enemy cluster density and positions. 
+                            (b-c) Visual sequence showing Baneling execution, where the unit identifies a dense cluster of enemy units and detonates for maximum AOE damage.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Exp. -->
+            <div class="columns is-centered has-text-centered">
+            <div class="column">
+                <h2 class="title is-3">Performance</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        COMPASS demonstrates significant performance advantages in SMACv2, 
+                        particularly excelling in Protoss scenarios where it achieves a 57% win rate in symmetric engagements using GPT-4o-mini, 
+                        substantially outperforming traditional approaches like QMIX (27%), MAPPO (32%), and HAPPO (34%). 
+    
+                        However, performance varies across race matchups. 
+                        While maintaining strong results in Terran scenarios (39% win rate), COMPASS shows limited effectiveness in Zerg scenarios (16% win rate). 
+                        This performance disparity can be attributed to the unique mechanics of Zerg combat units, which demand more fine-grained micromanagement due to their shorter attack ranges and reliance on swarm-based tactics.
+                    </p>
+                    <table>
+                        <caption>Comparative performance of COMPASS (with three VLM variants: G-4o=GPT-4o-mini, C-Hk=Claude-3-Haiku, Q2-VL=Qwen2-VL-72B) and state-of-the-art MARL baselines on SMACv2. Median win rates (\%) and standard deviations (subscripts) are reported across Protoss, Terran, and Zerg scenarios in symmetric (5v5) and asymmetric (5v6) categories. Results are averaged over 5 seeds. Bold values denote the best performance in each scenario.</caption>
+                        <thead>
+                            <tr>
+                            <th></th> <!-- Empty header for the first column -->
+                            <th>QMIX</th>
+                            <th>MAPPO</th>
+                            <th>HAPPO</th>
+                            <th>HASAC</th>
+                            <th colspan="3">COMPASS</th> <!-- Spans 3 columns -->
+                            </tr>
+                            <tr>
+                            <th></th> <!-- Empty header for the first column -->
+                            <th></th> <!-- Empty under QMIX -->
+                            <th></th> <!-- Empty under MAPPO -->
+                            <th></th> <!-- Empty under HAPPO -->
+                            <th></th> <!-- Empty under HASAC -->
+                            <th>G-4o</th> <!-- Sub-header under COMPASS -->
+                            <th>C-Hk</th> <!-- Sub-header under COMPASS -->
+                            <th>Q2-VL</th><!-- Sub-header under COMPASS -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="section-header">
+                            <th colspan="8">PROTOSS</th> <!-- Spans all 8 columns -->
+                            </tr>
+                            <tr>
+                            <td>SYMMETRIC</td>
+                            <td>0.27<sub>0.03</sub></td>
+                            <td>0.32<sub>0.067</sub></td>
+                            <td>0.34<sub>0.07</sub></td>
+                            <td>0.20<sub>0.08</sub></td>
+                            <td><strong>0.57<sub>0.08</sub></strong></td>
+                            <td>0.49<sub>0.06</sub></td>
+                            <td>0.45<sub>0.04</sub></td>
+                            </tr>
+                            <tr>
+                            <td>ASYMMETRIC</td>
+                            <td>0.01<sub>0.01</sub></td>
+                            <td>0.04<sub>0.04</sub></td>
+                            <td>0.02<sub>0.03</sub></td>
+                            <td>0.01<sub>0.02</sub></td>
+                            <td><strong>0.08<sub>0.04</sub></strong></td>
+                            <td>0.06<sub>0.05</sub></td>
+                            <td>0.06<sub>0.03</sub></td>
+                            </tr>
+                            <tr class="section-header">
+                            <th colspan="8">TERRAN</th> <!-- Spans all 8 columns -->
+                            </tr>
+                            <tr>
+                            <td>SYMMETRIC</td>
+                            <td>0.38<sub>0.04</sub></td>
+                            <td>0.36<sub>0.1</sub></td>
+                            <td>0.35<sub>0.1</sub></td>
+                            <td>0.29<sub>0.01</sub></td>
+                            <td><strong>0.39<sub>0.01</sub></strong></td>
+                            <td>0.38<sub>0.05</sub></td>
+                            <td>0.31<sub>0.02</sub></td>
+                            </tr>
+                            <tr>
+                            <td>ASYMMETRIC</td>
+                            <td>0.06<sub>0.02</sub></td>
+                            <td>0.07<sub>0.06</sub></td>
+                            <td>0.01<sub>0.03</sub></td>
+                            <td>0.05<sub>0.02</sub></td>
+                            <td><strong>0.1<sub>0.03</sub></strong></td>
+                            <td><strong>0.1<sub>0.01</sub></strong></td>
+                            <td>0.06<sub>0.03</sub></td>
+                            </tr>
+                            <tr class="section-header">
+                            <th colspan="8">ZERG</th> <!-- Spans all 8 columns -->
+                            </tr>
+                            <tr>
+                            <td>SYMMETRIC</td>
+                            <td>0.21<sub>0.01</sub></td>
+                            <td><strong>0.27<sub>0.04</sub></strong></td>
+                            <td>0.2<sub>0.11</sub></td>
+                            <td>0.24<sub>0.07</sub></td>
+                            <td>0.16<sub>0.07</sub></td>
+                            <td>0.18<sub>0.02</sub></td>
+                            <td>0.14<sub>0.03</sub></td>
+                            </tr>
+                            <tr>
+                            <td>ASYMMETRIC</td>
+                            <td><strong>0.18<sub>0.03</sub></strong></td>
+                            <td>0.13<sub>0.09</sub></td>
+                            <td>0.09<sub>0.02</sub></td>
+                            <td>0.08<sub>0.05</sub></td>
+                            <td>0.03<sub>0.01</sub></td>
+                            <td>0.04<sub>0.01</sub></td>
+                            <td>0.02<sub>0.01</sub></td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    
+                
+                <div class="column overlay-image has-text-centered">
+                    <img src="assets/Baseline training results on SMACv2.png">
+                    <div class="content is-centered has-text-centered font-size: 1em;">
+                        Baseline training results on SMACv2.
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <!--/ Exp. -->
+        </div>
+    </section>
+    <!-- <div class="container is-max-desktop">
+        <div class="content is-centered has-text-centered">
+            <div class="column has-text-justified">
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="columns is-centered has-text-centered is-vcentered">
+                <div class="column is-centered has-text-centered is-vcentered">
+                    <video poster="" id="shiba" autoplay playsinline controls muted loop height="100%">
+                        <source src="assets/high_dyn_hand_move.mp4"
+                                type="video/mp4">
+                    </video>
+                    <div class="content is-centered has-text-centered font-size: 1em;">
+                        <strong>Highly dynamic hand motions</strong>
+                    </div>
+                </div>
+                <div class="column is-centered has-text-centered is-vcentered">
+                    <video poster="" id="shiba" autoplay playsinline controls muted loop height="100%">
+                        <source src="assets/long_dist_hand_move.mp4"
+                                type="video/mp4">
+                    </video>
+                    <div class="content is-centered has-text-centered font-size: 1em;">
+                        <strong>Long distance hand movements</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    </div>
+    </div> -->
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Exp. -->
+            <div class="columns is-centered has-text-centered">
+            <div class="column">
+                <h2 class="title is-3">Ablation Studies</h2>
+                <div class="content has-text-justified">
+                <p>
+                    <strong>Skill Initialization</strong> To evaluate the impact of our skill initialization, we analyze the performance of COMPASS using only the initialized skill library derived from expert demonstrations. The results in Table \ref{tab:initialized} demonstrate that skill initialization alone achieves non-trivial performance across different scenarios, particularly in symmetric matchups. Moreover, the gap between initialized skills and COMPASS underscores the necessity of incremental skill synthesis.
+                </p>
+                <table id="tab:initialized">
+                    <caption>Win rates of the initialized skill library (bootstrapped from expert demonstrations) on SMACv2.</caption>
+                    <thead>
+                      <tr>
+                        <th></th> <!-- Empty header for the first column -->
+                        <th>PROTOSS</th>
+                        <th>TERRAN</th>
+                        <th>ZERG</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>5V5</td>
+                        <td>0.35<sub>0.06</sub></td>
+                        <td>0.24<sub>0.04</sub></td>
+                        <td>0.06<sub>0.01</sub></td>
+                      </tr>
+                      <tr>
+                        <td>5V6</td>
+                        <td>0.04<sub>0.05</sub></td>
+                        <td>0.06<sub>0.02</sub></td>
+                        <td>0.02<sub>0.03</sub></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                <p>
+                    <strong>Communication</strong> To demonstrate the critical role of communication, we evaluated COMPASS on Protoss 5v5 without communication. The resulting win rate with GPT-4o-mini decreased to 0.06. Without communication, only the initial discoverer retains enemy visibility, while others cannot 'see' enemies and default to no enemy behaviors, disrupting engagement and coordination.
+                </p>
+                <p>
+                    <strong>Self Reflection</strong> Removing self-reflection in Protoss 5v5 reduced the win rate by 10%, highlighting its role in refining decision-making.
+                </p>
+                <p>
+                    <strong>Visual information</strong> Omitting visual input led to a 10% performance drop, forcing agents to rely solely on textual cues for spatial awareness. Without images, map boundaries are inferred indirectly (e.g., from movement restrictions) rather than directly perceived. This reduces spatial understanding, leading to suboptimal movement and positioning decisions.
+                </p>
+                </div>
+        
+            </div>
+            </div>
+            <!--/ Exp. -->
+        </div>
+    </section>
+    <!-- <div class="container is-max-desktop">
+        <div class="content is-centered has-text-centered">
+            <div class="column has-text-justified">
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="columns is-centered has-text-centered is-vcentered">
+                <div class="column is-centered has-text-centered is-vcentered">
+                    <video poster="" id="shiba" autoplay playsinline controls muted loop height="100%">
+                        <source src="assets/fingertip-5-cropped.mp4"
+                                type="video/mp4">
+                    </video>
+                    <div class="content is-centered has-text-centered font-size: 1em;">
+                        <strong>5-fingers hands</strong>
+                    </div>
+                </div>
+                <div class="column is-centered has-text-centered is-vcentered">
+                    <video poster="" id="shiba" autoplay playsinline controls muted loop height="100%">
+                        <source src="assets/fingertip-4-cropped.mp4"
+                                type="video/mp4">
+                    </video>
+                    <div class="content is-centered has-text-centered font-size: 1em;">
+                        <strong>4-fingers hands</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    </div>
+    </div> -->
+
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Exp. -->
+            <div class="columns is-centered has-text-centered">
+            <div class="column">
+                <h2 class="title is-3">More Results</h2>
+                <div class="content has-text-justified">
+                </div>
+            </div>
+            </div>
+            <!--/ Exp. -->
+        </div>
+    </section>
+    
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container">
+            <div id="results-carousel" class="carousel results-carousel">
+                <div class="item item-fullbody">
+                <video poster="" id="fullbody" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-1/protoss_5v5.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-shiba">
+                <video poster="" id="shiba" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-1/protoss_5v6.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-shiba">
+                <video poster="" id="shiba" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-1/terran_5v5.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-toby">
+                <video poster="" id="toby" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-1/terran_5v6.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-toby">
+                <video poster="" id="toby" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-1/zerg_5v5.mp4"
+                                type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-toby">
+                <video poster="" id="toby" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-1/zerg_5v6.mp4"
+                                type="video/mp4">
+                </video>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container">
+            <div id="results-carousel" class="carousel results-carousel">
+                <div class="item item-fullbody">
+                <video poster="" id="fullbody" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-2/video_7.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-shiba">
+                <video poster="" id="shiba" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-2/video_8.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-shiba">
+                <video poster="" id="shiba" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-2/video_9.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-toby">
+                <video poster="" id="toby" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-2/video_10.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-toby">
+                <video poster="" id="toby" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-2/video_11.mp4"
+                                type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-toby">
+                <video poster="" id="toby" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-2/video_12.mp4"
+                                type="video/mp4">
+                </video>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section> -->
+
+
+    <!-- <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container">
+            <div id="results-carousel" class="carousel results-carousel">
+                <div class="item item-fullbody">
+                <video poster="" id="fullbody" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-2/video_13.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-shiba">
+                <video poster="" id="shiba" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-2/video_14.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-shiba">
+                <video poster="" id="shiba" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-2/video_15.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-toby">
+                <video poster="" id="toby" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-2/video_16.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-toby">
+                <video poster="" id="toby" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-2/video_17.mp4"
+                                type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-toby">
+                <video poster="" id="toby" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-2/video_18.mp4"
+                                type="video/mp4">
+                </video>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container">
+            <div id="results-carousel" class="carousel results-carousel">
+                <div class="item item-fullbody">
+                <video poster="" id="fullbody" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-2/video_19.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-shiba">
+                <video poster="" id="shiba" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-2/video_20.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-shiba">
+                <video poster="" id="shiba" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-2/video_21.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-toby">
+                <video poster="" id="toby" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-2/video_22.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-toby">
+                <video poster="" id="toby" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-2/video_23.mp4"
+                                type="video/mp4">
+                </video>
+                </div>
+                <div class="item item-toby">
+                <video poster="" id="toby" autoplay playsinline controls muted loop height="100%">
+                    <source src="assets/demo-2/video_24.mp4"
+                                type="video/mp4">
+                </video>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section> -->
+
+
+    <!-- <script>
+        const burgerIcon = document.querySelector('#burger');
+        const navbarMenu = document.querySelector('#nav-links');
+        burgerIcon.addEventListener('click', () => {
+            navbarMenu.classList.toggle('is-active');
+        });
+    </script> -->
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            Website template inspired by <a href="https://rp1m.github.io/">RP1M</a> and <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
