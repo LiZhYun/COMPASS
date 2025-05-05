@@ -428,7 +428,15 @@
             <div class="column">
                 <h2 class="title is-3">Performance</h2>
                 <div class="content has-text-justified">
-                
+                    <p>
+                        COMPASS demonstrates significant performance advantages in SMACv2, 
+                        particularly excelling in Protoss scenarios where it achieves a 57% win rate in symmetric engagements using GPT-4o-mini, 
+                        substantially outperforming traditional approaches like QMIX (27%), MAPPO (32%), and HAPPO (34%). 
+    
+                        However, performance varies across race matchups. 
+                        While maintaining strong results in Terran scenarios (39% win rate), COMPASS shows limited effectiveness in Zerg scenarios (16% win rate). 
+                        This performance disparity can be attributed to the unique mechanics of Zerg combat units, which demand more fine-grained micromanagement due to their shorter attack ranges and reliance on swarm-based tactics.
+                    </p>
                     <table>
                         <caption>Comparative performance of COMPASS (with three VLM variants: G-4o=GPT-4o-mini, C-Hk=Claude-3-Haiku, Q2-VL=Qwen2-VL-72B) and state-of-the-art MARL baselines on SMACv2. Median win rates (\%) and standard deviations (subscripts) are reported across Protoss, Terran, and Zerg scenarios in symmetric (5v5) and asymmetric (5v6) categories. Results are averaged over 5 seeds. Bold values denote the best performance in each scenario.</caption>
                         <thead>
@@ -524,15 +532,7 @@
                         </tbody>
                         </table>
                     
-                <p>
-                    COMPASS demonstrates significant performance advantages in SMACv2, 
-                    particularly excelling in Protoss scenarios where it achieves a 57% win rate in symmetric engagements using GPT-4o-mini, 
-                    substantially outperforming traditional approaches like QMIX (27%), MAPPO (32%), and HAPPO (34%). 
-
-                    However, performance varies across race matchups. 
-                    While maintaining strong results in Terran scenarios (39% win rate), COMPASS shows limited effectiveness in Zerg scenarios (16% win rate). 
-                    This performance disparity can be attributed to the unique mechanics of Zerg combat units, which demand more fine-grained micromanagement due to their shorter attack ranges and reliance on swarm-based tactics.
-                </p>
+                
                 <div class="column overlay-image has-text-centered">
                     <img src="assets/Baseline training results on SMACv2.png">
                     <div class="content is-centered has-text-centered font-size: 1em;">
@@ -545,7 +545,7 @@
             <!--/ Exp. -->
         </div>
     </section>
-    <div class="container is-max-desktop">
+    <!-- <div class="container is-max-desktop">
         <div class="content is-centered has-text-centered">
             <div class="column has-text-justified">
     <section class="hero is-light is-small">
@@ -574,12 +574,12 @@
     </section>
     </div>
     </div>
-    </div>
+    </div> -->
 
-    <section class="section">
-        <div class="container is-max-desktop">
+    <!-- <section class="section">
+        <div class="container is-max-desktop"> -->
             <!-- Exp. -->
-            <div class="columns is-centered has-text-centered">
+            <!-- <div class="columns is-centered has-text-centered">
             <div class="column">
                 <h2 class="title is-3">Cross Embodiment</h2>
                 <div class="content has-text-justified">
@@ -589,11 +589,11 @@
                 </div>
         
             </div>
-            </div>
+            </div> -->
             <!--/ Exp. -->
-        </div>
-    </section>
-    <div class="container is-max-desktop">
+        <!-- </div>
+    </section> -->
+    <!-- <div class="container is-max-desktop">
         <div class="content is-centered has-text-centered">
             <div class="column has-text-justified">
     <section class="hero is-light is-small">
@@ -622,7 +622,7 @@
     </section>
     </div>
     </div>
-    </div>
+    </div> -->
 
 
 
@@ -646,37 +646,37 @@
             <div id="results-carousel" class="carousel results-carousel">
                 <div class="item item-fullbody">
                 <video poster="" id="fullbody" autoplay playsinline controls muted loop height="100%">
-                    <source src="assets/demo-2/video_1.mp4"
+                    <source src="assets/demo-1/protoss_5v5.mp4"
                             type="video/mp4">
                 </video>
                 </div>
                 <div class="item item-shiba">
                 <video poster="" id="shiba" autoplay playsinline controls muted loop height="100%">
-                    <source src="assets/demo-2/video_2.mp4"
+                    <source src="assets/demo-1/protoss_5v6.mp4"
                             type="video/mp4">
                 </video>
                 </div>
                 <div class="item item-shiba">
                 <video poster="" id="shiba" autoplay playsinline controls muted loop height="100%">
-                    <source src="assets/demo-2/video_3.mp4"
+                    <source src="assets/demo-1/terran_5v5.mp4"
                             type="video/mp4">
                 </video>
                 </div>
                 <div class="item item-toby">
                 <video poster="" id="toby" autoplay playsinline controls muted loop height="100%">
-                    <source src="assets/demo-2/video_4.mp4"
+                    <source src="assets/demo-1/terran_5v6.mp4"
                             type="video/mp4">
                 </video>
                 </div>
                 <div class="item item-toby">
                 <video poster="" id="toby" autoplay playsinline controls muted loop height="100%">
-                    <source src="assets/demo-2/video_5.mp4"
+                    <source src="assets/demo-1/zerg_5v5.mp4"
                                 type="video/mp4">
                 </video>
                 </div>
                 <div class="item item-toby">
                 <video poster="" id="toby" autoplay playsinline controls muted loop height="100%">
-                    <source src="assets/demo-2/video_6.mp4"
+                    <source src="assets/demo-1/zerg_5v6.mp4"
                                 type="video/mp4">
                 </video>
                 </div>
@@ -686,7 +686,7 @@
     </section>
 
 
-    <section class="hero is-light is-small">
+    <!-- <section class="hero is-light is-small">
         <div class="hero-body">
             <div class="container">
             <div id="results-carousel" class="carousel results-carousel">
@@ -729,10 +729,10 @@
             </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
 
-    <section class="hero is-light is-small">
+    <!-- <section class="hero is-light is-small">
         <div class="hero-body">
             <div class="container">
             <div id="results-carousel" class="carousel results-carousel">
@@ -820,7 +820,7 @@
             </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
 
     <!-- <script>
@@ -836,8 +836,7 @@
                 <div class="column is-8">
                     <div class="content">
                         <p>
-                            Website template inspired by <a href="https://robopen.github.io/">RoboAgent</a>, <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, and <a
-                                href="https://robotics-transformer2.github.io/">RT-2</a>
+                            Website template inspired by <a href="https://rp1m.github.io/">RP1M</a> and <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
                         </p>
                     </div>
                 </div>
