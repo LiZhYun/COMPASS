@@ -32,10 +32,10 @@ $(document).ready(function() {
     var options = {
 			slidesToScroll: 1,
 			slidesToShow: 3,
-			loop: true,
-			infinite: true,
+			loop: false,
+			infinite: false,
 			autoplay: false,
-			autoplaySpeed: 3000,
+			autoplaySpeed: 5000,
     }
 
 		// Initialize all div with carousel class
@@ -65,14 +65,27 @@ $(document).ready(function() {
         player.currentTime = player.duration / 100 * this.value;
       })
     }, false);*/
-    preloadInterpolationImages();
 
-    $('#interpolation-slider').on('input', function(event) {
-      setInterpolationImage(this.value);
-    });
-    setInterpolationImage(0);
-    $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
+    // preloadInterpolationImages();
 
-    bulmaSlider.attach();
+    // $('#interpolation-slider').on('input', function(event) {
+    //   setInterpolationImage(this.value);
+    // });
+    // setInterpolationImage(0);
+    // $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
+
+    // bulmaSlider.attach();
 
 })
+// function updateResultVideo() {
+//   var task = document.getElementById("single-menu-replay").value;
+
+//   console.log("qpred", "media/" + task + ".mp4");
+//   var video = document.getElementById("result-video");
+//   video.src = "media/" + task + ".mp4";
+//   video.playbackRate = 0.5;
+//   video.play();
+
+
+//   includeHTML()
+// }
