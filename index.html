@@ -278,10 +278,10 @@
                 <div class="column overlay-image has-text-centered">
                     <img src="assets/compass.png">
                     <p>
-                        Overview of the COMPASS architecture, a novel framework that advances cooperative multi-agent decision-making through three synergistic components: 
-                        (1) A VLM-based closed-loop planner that enables decentralized control by continuously processing multi-modal feedback and adapting strategies, addressing the non-Markovian challenge of multi-agent systems; 
-                        (2) A dynamic skill synthesis mechanism that combines demonstration bootstrapping with incremental skill generation, improving sample efficiency and interpretability; and 
-                        (3) A structured communication protocol that facilitates efficient information sharing through entity-based multi-hop propagation, enhancing cooperative perception under partial observability.
+                        Overview of the COMPASS architecture, a novel framework that advances <strong>cooperative multi-agent decision-making</strong> through three synergistic components: 
+                        (1) A <strong>VLM-based closed-loop planner</strong> that enables decentralized control by continuously processing multi-modal feedback and adapting strategies, addressing the non-Markovian challenge of multi-agent systems; 
+                        (2) A <strong>dynamic skill synthesis mechanism</strong> that combines demonstration bootstrapping with incremental skill generation, improving sample efficiency and interpretability; and 
+                        (3) A <strong>structured communication protocol</strong> that facilitates efficient information sharing through entity-based multi-hop propagation, enhancing cooperative perception under partial observability.
                     </p>
                 </div>
                 <!-- <h2 class="title is-4">
@@ -296,9 +296,39 @@
             <!-- Paint the vision / Overview-->
             <div class="column has-text-justified">
 
-                <h3>How does the agent learn to play the piano given only the MIDI file? </h3>
+                <h3>Adaptive Skill Synthesis</h3>
 
                 <div class="column overlay-image has-text-centered">
+                    <img src="assets/adaptive skill.png">
+                    <p>
+                        Overview of Adaptive Skill Synthesis. 
+                        VLMs perform (Top) <strong>Bootstrapping</strong> by analyzing offline data for initial Tactic Analysis and Skill Generation into a Skill Library. 
+                        (Bottom) <strong>Incremental Synthesis</strong> uses Task Reasoning to dynamically generate or enhance code-based skills, evolving the library for new tasks. 
+                        The skills follow a structured decision-making pipeline with two core components: score_target(unit) for dynamic target prioritization and control_logic() for coordinating behavior. 
+                        Textual observations are parsed into structured data (obs_data), mapping raw text to attributes, e.g., "Can move North: yes" -> can_move={'north': True}.
+                    </p>
+                </div>
+
+                <section class="hero is-light is-small">
+                    <div class="hero-body">
+                        <div class="columns is-centered has-text-centered is-vcentered">
+                            <div class="column is-centered has-text-centered is-vcentered">
+                                <img src="assets/task reasoning.png">
+                                <div class="content is-centered has-text-centered font-size: 1em;">
+                                    <strong>Task Reasoning</strong>
+                                </div>
+                            </div>
+                            <div class="column is-centered has-text-centered is-vcentered">
+                                <img src="assets/self reflection.png">
+                                <div class="content is-centered has-text-centered font-size: 1em;">
+                                    <strong>Self Reflection</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- <div class="column overlay-image has-text-centered">
                     <p> Although fingering is highly personalized, generally speaking, it helps pianists to press keys timely and
                         efficiently. Motivated by this, apart from maximizing the key pressing rewards, we also aim to minimize the moving
                         distances of fingers. Specifically, at time step \(t\), for the \(i\)-th key \(k^i\) to press, we use the \(j\)-th
@@ -321,7 +351,7 @@
                             <source src="assets/OT_reward_calculation.mp4" type="video/mp4">
                         </video>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>
