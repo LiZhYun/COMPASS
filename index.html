@@ -576,23 +576,57 @@
     </div>
     </div> -->
 
-    <!-- <section class="section">
-        <div class="container is-max-desktop"> -->
+    <section class="section">
+        <div class="container is-max-desktop">
             <!-- Exp. -->
-            <!-- <div class="columns is-centered has-text-centered">
+            <div class="columns is-centered has-text-centered">
             <div class="column">
-                <h2 class="title is-3">Cross Embodiment</h2>
+                <h2 class="title is-3">Ablation Studies</h2>
                 <div class="content has-text-justified">
                 <p>
-                    Since our approach does not require human demonstrations or fingering annotations, it can be easily transferred to robot hands with different morphologies, even other robotic platforms.
+                    <strong>Skill Initialization</strong> To evaluate the impact of our skill initialization, we analyze the performance of COMPASS using only the initialized skill library derived from expert demonstrations. The results in Table \ref{tab:initialized} demonstrate that skill initialization alone achieves non-trivial performance across different scenarios, particularly in symmetric matchups. Moreover, the gap between initialized skills and COMPASS underscores the necessity of incremental skill synthesis.
+                </p>
+                <table id="tab:initialized">
+                    <caption>Win rates of the initialized skill library (bootstrapped from expert demonstrations) on SMACv2.</caption>
+                    <thead>
+                      <tr>
+                        <th></th> <!-- Empty header for the first column -->
+                        <th>PROTOSS</th>
+                        <th>TERRAN</th>
+                        <th>ZERG</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>5V5</td>
+                        <td>0.35<sub>0.06</sub></td>
+                        <td>0.24<sub>0.04</sub></td>
+                        <td>0.06<sub>0.01</sub></td>
+                      </tr>
+                      <tr>
+                        <td>5V6</td>
+                        <td>0.04<sub>0.05</sub></td>
+                        <td>0.06<sub>0.02</sub></td>
+                        <td>0.02<sub>0.03</sub></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                <p>
+                    <strong>Communication</strong> To demonstrate the critical role of communication, we evaluated COMPASS on Protoss 5v5 without communication. The resulting win rate with GPT-4o-mini decreased to 0.06. Without communication, only the initial discoverer retains enemy visibility, while others cannot 'see' enemies and default to no enemy behaviors, disrupting engagement and coordination.
+                </p>
+                <p>
+                    <strong>Self Reflection</strong> Removing self-reflection in Protoss 5v5 reduced the win rate by 10%, highlighting its role in refining decision-making.
+                </p>
+                <p>
+                    <strong>Visual information</strong> Omitting visual input led to a 10% performance drop, forcing agents to rely solely on textual cues for spatial awareness. Without images, map boundaries are inferred indirectly (e.g., from movement restrictions) rather than directly perceived. This reduces spatial understanding, leading to suboptimal movement and positioning decisions.
                 </p>
                 </div>
         
             </div>
-            </div> -->
+            </div>
             <!--/ Exp. -->
-        <!-- </div>
-    </section> -->
+        </div>
+    </section>
     <!-- <div class="container is-max-desktop">
         <div class="content is-centered has-text-centered">
             <div class="column has-text-justified">
